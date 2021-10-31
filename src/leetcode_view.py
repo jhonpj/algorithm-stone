@@ -39,16 +39,17 @@ class LeetcodeView(platform_view.PlatformView):
         for n in m.nodes:
             if n.is_root:
                 count = self.get_module_problem_count(m)
+                #count获得问题数量
                 label = "%s(%s)" % (n.name, str(count))
-                # 根节点
+                # 根节点, 性格属性
                 g.node(name=n.name, label=label, style='filled', target="_parent", href="https://leetcode-cn.com/tag/"+slug, 
-                    fontsize='14',
+                    fontsize='16',
                     fillcolor="orangered", color='lightgrey', fontcolor="white", fontname="Microsoft YaHei", shape='box')
             else:
                 # 普通模块节点
                 label = "%s(%s)" % (n.name, str(len(n.problems)))
                 g.node(name=n.name, label=label, style='filled', fillcolor="lightslategray", color='lightgrey', 
-                    fontsize='12',
+                    fontsize='14',
                     fontcolor="white", fontname="Microsoft YaHei", shape='box')
                 g.edge(n.parent, n.name, color=theme.color_arrow)
 
@@ -56,8 +57,10 @@ class LeetcodeView(platform_view.PlatformView):
             last = ""
             for p in n.problems:
                 title = leet.get_title(p.id)
+                #level难易程度
                 level = leet.get_level(p.id)
                 problem = leet.get_problem(p.id)
+                #problem题目内容
                 idstr = str(p.id)
                 if title == None:
                     continue 
@@ -74,10 +77,10 @@ class LeetcodeView(platform_view.PlatformView):
                     print("unknown level:", level)
                     continue
                 slug = problem['data']['question']['questionTitleSlug']
-
+                #slug题目网址后缀，
                 # 题目节点
                 g.node(name=idstr, label=title, target="_parent", href="https://leetcode-cn.com/problems/"+slug, 
-                        color=color, fontname="Microsoft YaHei", fontsize='12', shape='box')
+                        color=color, fontname="Microsoft YaHei", fontsize='14', shape='box')
 
                 if len(last) > 0:
                     g.edge(last, idstr, color=theme.color_arrow)
@@ -88,6 +91,7 @@ class LeetcodeView(platform_view.PlatformView):
         g.format = 'svg'
         g.render(filename=util.get_images(out_name))
         os.remove(util.get_images(out_name))
+        #增加完成标志
         self.post_process(util.get_images(out_name)+".svg")
 
 def process():

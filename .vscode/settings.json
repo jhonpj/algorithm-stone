@@ -56,5 +56,5 @@
         "clocale": "cpp",
         "ctime": "cpp"
     },
-    "python.pythonPath": "C:\\Program Files\\Python39\\python.exe"
+    "python.pythonPath": "/home/jhon/anaconda3/bin/python"
 }

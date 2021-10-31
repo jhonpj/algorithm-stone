@@ -24,9 +24,9 @@ class DataMapNode:
 class DataMap:
     def __init__(self, data):
         self.data = data
-        self.nodes = []
-        self.last_root_name = ""
-        self.problem_map = {}
+        self.nodes = []  #存放节点集合
+        self.last_root_name = ""  #当前节点集合的根节点
+        self.problem_map = {}  #存放当前节点的题目清单：{id,tags}
         self.parse()
 
     def consume_blank(self, pos):
@@ -97,6 +97,7 @@ class DataMap:
 
     def consume_name(self, pos, node):
         length = len(self.data)
+        #文本内容长度
         state = 0
         name = ""
         while pos < length:
@@ -116,7 +117,7 @@ class DataMap:
                 name += c
             pos += 1
         return -1
-
+    #处理一个子节点
     def consume_node(self, pos):
         node = DataMapNode("", [], False, None)
         pos = self.consume_name(pos, node)

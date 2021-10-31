@@ -27,9 +27,10 @@ class Leetcode:
         self.dict = self.init_db()
         self.finished = []
         self.flasks = []
-        # read user
+        # read user:leetcode使用目录
         p = util.get_root("user", "leetcode")
         entries = os.listdir(p)
+        #os.listdir返回list,包含目录下的所有文件和文件夹,记录完成的题目
         for k in entries:
             if k.endswith(".cpp"):
                 self.finished.append(k)
@@ -166,16 +167,19 @@ class Leetcode:
 
     def update_db(self):
         t = self.get_update_db_time()
-        if util.now()-t < 24*3600*1000:
+        if util.now()-t < 24:
             return
-
+        #24*3600*1000 一天
         url = withUrl("api/problems/all/")
         f = urllib.request.urlopen(url)
+        #f为HTTPResponse对象
         content = f.read().decode('utf-8')
+        #content为返回的网页内容
         qlist = json.loads(content)
 
         try:
             for q in qlist['stat_status_pairs']:
+                #q为每道题的内容
                 id = q['stat']['question_id']
                 front_id = q['stat']['frontend_question_id']
                 if is_int(front_id):

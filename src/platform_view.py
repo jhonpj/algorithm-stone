@@ -85,6 +85,7 @@ class PlatformView(object):
                 continue
             self.post_process_problem_node(graph, n)
         content = b.prettify()
+        #prettify() 代码格式给搞的标准一些
         util.save_file_content(path, content)
 
     def post_process_problem_node(self, graph, n):
@@ -118,5 +119,6 @@ class PlatformView(object):
         if flask != "":
             url = "https://github.com/acm-clan/algorithm-stone/blob/main/user/%s/%s" % (self.slug, flask)
             text = svg_icon_flask % (str(x0-9), str(y2-9), url)
+            #%格式化匹配svg_icon_flask，
             t = BeautifulSoup(text, "xml").select_one("g")
             n.append(t)
