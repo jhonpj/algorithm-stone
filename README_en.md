@@ -11,14 +11,14 @@
 > Tip:点击svg文件中的题目，可以跳转到题目页面。
 
 #### 动态规划路线图
-<img src="https://raw.githubusercontent.com/acm-clan/algorithm-stone/main/images/leetcode_dp.svg">
+<img src="https://raw.githubusercontent.com/jhonpj/algorithm-stone/main/images/leetcode_dp.svg">
 
 #### Tree路线图
-<img src="https://raw.githubusercontent.com/acm-clan/algorithm-stone/main/images/leetcode_tree.svg">
+<img src="https://raw.githubusercontent.com/jhonpj/algorithm-stone/main/images/leetcode_tree.svg">
 
 #### 安装开发环境
 
-详细的开发说明参考：[开发文档](https://github.com/acm-clan/algorithm-stone/blob/main/docs/dev_en.md)
+详细的开发说明参考：[开发文档](https://github.com/jhonpj/algorithm-stone/blob/main/docs/dev_en.md)
 
 #### 规划模块
 以下是Leetcode所有模块，每个模块由一个人专门处理。  
